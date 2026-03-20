@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Doc Governance"
+  short_description: "Govern docs with local taxonomy first"
+  default_prompt: "Use $project-doc-governance to classify, review, or reorganize this project's docs by applying the repository's local taxonomy first."
