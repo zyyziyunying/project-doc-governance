@@ -6,12 +6,14 @@ Use this reference only when a repository does not already define its own docume
 
 Before using this default model, read repository-local structure docs when they exist:
 
-- `AGENTS.md`
-- `docs/README.md`
 - `docs/taxonomy.md`
 - `docs/doc-taxonomy.md`
 - `docs/structure.md`
 - category index files or neighboring directory README files
+- `AGENTS.md`
+- `docs/README.md`, but only when it explicitly defines human-facing docs structure or placement
+
+Do not infer docs placement from a general project `README.md` unless it explicitly defines taxonomy rules for the target scope.
 
 If those files define placement rules, follow them instead of this reference.
 
@@ -21,7 +23,7 @@ Use this order when deciding which rule controls a documentation placement decis
 
 1. the nearest dedicated taxonomy, placement, or category index file that explicitly covers the target path
 2. a repository-level taxonomy or structure document that defines category semantics
-3. `docs/README.md` when it defines the human-facing docs structure
+3. `docs/README.md` when it explicitly defines the human-facing docs structure or placement
 4. `AGENTS.md` for agent-operational handling, or for explicit pointers to the real source of truth
 5. this default reference, only when the repository does not define the needed rule
 
@@ -45,6 +47,8 @@ When local docs are stale or incomplete:
 - report the stale files that need synchronization
 - fall back to this reference only for the uncovered portion of the decision
 - avoid broad restructuring based only on inference when stale docs could change the result
+
+A `docs/README.md` that is only navigational and does not define category meaning or placement is not a controlling source for classification.
 
 ## Default Categories
 
@@ -84,6 +88,63 @@ Use standalone guide files for narrow operational references that are not broad 
 
 If multiple guides of the same kind accumulate, consider introducing a dedicated category later, but only after the pattern is real.
 
+## Optional Local Pattern For Execution-Heavy Repositories
+
+Use this only as a repository-local taxonomy pattern when the generic fallback categories are too coarse for a project whose docs repeatedly revolve around problem definition, analysis, discussion, planning, and status tracking.
+
+This is not a new global default. It becomes authoritative only after the repository documents it locally in `docs/README.md`, `docs/taxonomy.md`, or a similarly scoped taxonomy file.
+
+Recommended categories:
+
+- `docs/problem/`
+- `docs/plan/`
+- `docs/status/`
+- `docs/analysis/`
+- `docs/discussion/`
+
+If a repository already uses `docs/progress/`, it can keep that directory name, but it should define it with `status` semantics rather than treating it as a generic bucket for anything time-related.
+
+Each category may keep its own `archive/` subdirectory for closed material, for example:
+
+- `docs/problem/archive/`
+- `docs/plan/archive/`
+- `docs/status/archive/`
+- `docs/analysis/archive/`
+- `docs/discussion/archive/`
+
+Use these category meanings:
+
+- `problem`: problem statements, constraints, acceptance gaps, blockers, and risks
+- `plan`: accepted implementation plans, migration steps, rollout checklists, and task breakdowns
+- `status`: progress snapshots, phase closeouts, completion records, and stabilization summaries
+- `analysis`: root-cause analysis, technical comparison, investigations, experiments, and evaluation material
+- `discussion`: unresolved design debate, RFC drafts, meeting discussion notes, and open questions
+
+Use these boundary rules:
+
+- Keep `problem` focused on what must be solved or respected, not how the work will be executed.
+- Keep `plan` for chosen execution paths, not still-open debate.
+- Keep `analysis` for evidence and reasoning, not final implementation mandates.
+- Keep `discussion` for unresolved conversation, not durable rules.
+- Keep `status` for reporting outcomes and state, not as a second home for plans or requirements.
+- Split mixed-purpose docs instead of stretching one file across multiple category meanings.
+
+Common mappings under this local pattern:
+
+- blockers and acceptance gaps -> `problem`
+- rollout plans and migration checklists -> `plan`
+- weekly updates and closeout summaries -> `status`
+- root-cause analysis and technical comparison -> `analysis`
+- RFC drafts and meeting debate notes -> `discussion`
+
+When a discussion becomes binding:
+
+- promote durable requirements into `problem` or the repository's implementation-facing source of truth
+- promote accepted execution steps into `plan`
+- archive the historical discussion copy under `discussion/archive/` when it is no longer active
+
+When a repository adopts this pattern, keep the structure small at first. Add extra top-level categories only after the repository has repeated documents with a clearly different purpose that does not fit these five categories or a standalone guide.
+
 ## Placement Rules
 
 Choose the destination by the document's strongest function.
@@ -114,7 +175,7 @@ Use these default mappings only when the repository does not already define a be
 
 When a repository uses this default model and the taxonomy changes, update these files in the same task:
 
-- `docs/README.md` for human-facing structure
+- the repository's human-facing docs index or taxonomy doc, often `docs/README.md` when the repository uses it for that purpose
 - `AGENTS.md` for short agent-facing operating rules
 
 Do not rely on only one of them if both audiences are affected.

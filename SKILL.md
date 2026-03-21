@@ -15,21 +15,22 @@ Read only the target document(s), nearby docs, and repository structure docs nee
 2. Discover repository-local taxonomy first.
 Read these files when they exist and are relevant:
 
-- `docs/README.md`
-- the root or nearest repository `AGENTS.md`
 - docs that explicitly define documentation structure or placement, such as `docs/taxonomy.md`, `docs/doc-taxonomy.md`, `docs/structure.md`, category index files, or neighboring directory README files
+- the root or nearest repository `AGENTS.md`
+- `docs/README.md`, but only when it clearly defines the human-facing docs structure or placement rules for the target scope
+- Do not read a general repository `README.md` by default for documentation placement decisions.
 
 3. Resolve authority before classifying.
 
 - Use the nearest dedicated taxonomy or placement doc that covers the target path as the primary source for that scope.
-- Otherwise use repository-level taxonomy docs and `docs/README.md` as the human-facing source of truth for category semantics and placement.
+- Otherwise use repository-level taxonomy or structure docs as the human-facing source of truth for category semantics and placement. Use `docs/README.md` only when it explicitly carries that role for the target scope.
 - Use `AGENTS.md` for agent-operational behavior, local workflow guardrails, and pointers to the source of truth. Do not let `AGENTS.md` silently redefine human-facing taxonomy when repository docs say otherwise.
 - If two local docs conflict, prefer the more specific scope. If scope is equal, prefer a dedicated taxonomy or structure doc over a general README or index, and prefer human-facing taxonomy docs over `AGENTS.md` for placement semantics.
 - If the conflict still changes the outcome materially, stop and report it instead of guessing.
 
 4. Detect missing, partial, or stale local rules.
 
-- Treat a local doc as missing when it does not cover the current document class or destination decision.
+- Treat a local doc as missing when it does not cover the current document class or destination decision. A `docs/README.md` that only links around the docs tree without defining category meaning or placement does not count as coverage.
 - Treat a local doc as stale when it references categories or paths that no longer exist, contradicts the active directory structure, or disagrees with a more specific maintained taxonomy doc.
 - If local docs are partial but still point to one stable pattern, extend that pattern and report what remains underspecified.
 - If local docs are stale but the correct destination is still obvious from a stronger active source, follow the stronger source and include the required sync fixes in the result.
@@ -37,11 +38,13 @@ Read these files when they exist and are relevant:
 
 5. Apply the fallback taxonomy only when local rules are missing, out of scope, or unusable for the current decision.
 Read [references/default-doc-taxonomy.md](references/default-doc-taxonomy.md) before creating new categories or moving docs based on default rules.
+If the repository is execution-heavy and the generic fallback would stay too coarse, you may establish a small repository-local taxonomy around `problem`, `plan`, `status`, `analysis`, and `discussion`, but only by documenting it locally in `docs/README.md` or a dedicated taxonomy doc in the same task.
 
 6. Classify the document by purpose, not by topic.
 
 - Follow repository-local purpose categories when they are defined.
 - Otherwise use [references/default-doc-taxonomy.md](references/default-doc-taxonomy.md) for the default meaning of implementation-facing docs, knowledge docs, archives, guide files, and common gray-area document classes.
+- For execution-heavy repositories, a good local split often separates problem definition, accepted plans, status tracking, analysis material, and unresolved discussion instead of collapsing them into one broad bucket.
 - Keep `AGENTS.md` short and agent-facing. Do not duplicate full human documentation into it.
 
 7. Resolve mixed-purpose documents.
@@ -53,7 +56,8 @@ Read [references/default-doc-taxonomy.md](references/default-doc-taxonomy.md) be
 8. Synchronize structure changes.
 
 - If you add a new docs category, move documents between categories, or materially change category semantics, update the repository-local taxonomy or index docs in the same task.
-- Update `docs/README.md` when the human-facing structure changes.
+- If you adopt the execution-heavy local pattern, prefer `status` as the stable category name. If the repository already uses `progress`, keep the name but define it with `status` semantics instead of letting it become a generic catch-all.
+- If the repository uses `docs/README.md` as its human-facing docs index or placement guide, update it when the structure changes.
 - Update `AGENTS.md` only for short agent-operational rules that should affect future Codex behavior.
 - Do not make `AGENTS.md` the only source of truth for human-facing taxonomy.
 
@@ -89,4 +93,6 @@ When using this skill, state:
 - Prefer the smallest change that restores structural clarity.
 - Prefer moving or splitting docs over rewriting everything.
 - Do not invent new top-level docs categories unless the existing taxonomy is clearly insufficient.
+- Do not replace the generic fallback taxonomy with the execution-heavy pattern unless the repository context clearly benefits from that more explicit local split.
+- Do not treat a general project `README.md` as taxonomy authority unless it explicitly defines placement rules for the target docs scope.
 - When a repository already documents its taxonomy locally, follow the repository files over this skill's defaults.

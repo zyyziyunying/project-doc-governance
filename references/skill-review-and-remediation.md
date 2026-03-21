@@ -18,6 +18,8 @@ Reviewer stance: strict, portability-first, maintenance-focused
 - 2026-03-21: Forward-tested the skill on `D:\dev\flutter_code\tiny_player` and validated a workable remediation pattern: add a local `docs/README.md`, archive misplaced historical discussion and status docs, preserve redirect stubs for old paths, and align the repository `AGENTS.md` with the local docs taxonomy.
 - 2026-03-21: The user later rolled back the `tiny_player` repository changes after review. Treat that run as evaluation evidence, not as a retained repository migration.
 - 2026-03-21: Forward-tested the skill on `D:\dev\flutter_code\video_list_android_demo` and landed a second cross-repository migration: created `docs/README.md`, moved closed root-level status/review docs into `docs/problem/archive/`, preserved the old root paths as redirect stubs, linked the root `README.md` to the docs index, and synchronized `AGENTS.md` to point at the human-facing source of truth.
+- 2026-03-21: Added an explicit optional local taxonomy pattern for execution-heavy repositories: `problem`, `plan`, `status`, `analysis`, and `discussion`, with per-category archive support and guidance for keeping it repository-local rather than elevating it to the global fallback.
+- 2026-03-21: Tightened the authority model so the skill no longer treats a general repository `README.md` as default taxonomy input, and only considers `docs/README.md` when it explicitly defines docs placement or category semantics.
 
 ## Baseline Assessment
 
@@ -49,6 +51,8 @@ Remaining gaps that still keep it below a higher score:
 
 - the accepted-retention signal is still limited because long-term keep-or-revert is controlled by repository owners after handoff
 - the default taxonomy is still opinionated and may need field use to refine edge cases
+- the new execution-heavy local taxonomy pattern is documented, but not yet validated by a retained cross-repository migration
+- the narrowed `docs/README.md` role is now clearer on paper, but still needs more field use against repositories that keep a docs index without full placement semantics
 - there is still some overlap between the workflow summary and the reference, even though it is smaller than before
 - the authority model has now been tested in "no local taxonomy, AGENTS non-authoritative" repositories, but not yet in a repository with an existing dedicated taxonomy doc that materially constrains placement
 
