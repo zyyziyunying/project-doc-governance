@@ -4,6 +4,9 @@ Reviewed on: 2026-03-21
 Scope: `C:\Users\zyy\.codex\skills\project-doc-governance`
 Reviewer stance: strict, portability-first, maintenance-focused
 
+Document role: active repository-local problem and remediation record for this skill repository.
+Placement authority: `docs/README.md`
+
 ## Progress Log
 
 - 2026-03-20: Recorded the baseline review and remediation backlog.
