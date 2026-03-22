@@ -77,7 +77,6 @@ This is not a new global default.
 Use it only when:
 
 - the repository already documents the pattern locally
-- or the existing docs already show a repeated split that the smaller fallback would materially collapse, and you can formalize that adoption locally in the same task
 
 If that signal is absent, keep the smaller fallback categories.
 
