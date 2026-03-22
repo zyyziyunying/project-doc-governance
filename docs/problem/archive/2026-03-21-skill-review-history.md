@@ -31,6 +31,7 @@ This archive preserves detailed historical material that no longer needs to stay
 - 2026-03-21: Forward-tested the skill on `D:\dev\flutter_code\video_list_android_demo` and landed a second cross-repository migration: created `docs/README.md`, moved closed root-level status/review docs into `docs/problem/archive/`, preserved the old root paths as redirect stubs, linked the root `README.md` to the docs index, and synchronized `AGENTS.md` to point at the human-facing source of truth.
 - 2026-03-21: Added an explicit optional local taxonomy pattern for execution-heavy repositories: `problem`, `plan`, `status`, `analysis`, and `discussion`, with per-category archive support and guidance for keeping it repository-local rather than elevating it to the global fallback.
 - 2026-03-21: Tightened the authority model so the skill no longer treats a general repository `README.md` as default taxonomy input, and only considers `docs/README.md` when it explicitly defines docs placement or category semantics.
+- 2026-03-22: Converged the old-path migration proposal into `references/default-doc-taxonomy.md`: high-visibility old paths now default to a redirect stub, while lower-visibility cases still fall back to breadcrumb-style traceability when readers need it.
 
 ## Baseline Assessment
 
@@ -117,6 +118,16 @@ Assessment from this trial:
 - The gray-area mapping for closed review/status/closeout docs held up in a real repository and produced a small, understandable archive shape.
 - The migration-integrity checklist was strong enough to drive the necessary sync work in one pass: docs index, agent guidance, root README discoverability, old-path redirects, and inbound-reference verification.
 - This is stronger evidence than the earlier `tiny_player` evaluation run because the migration was actually applied in a second unrelated repository rather than only prototyped and then rolled back.
+
+## Archived Convergence Note
+
+### Old-path migration visibility rule
+
+- Accepted on 2026-03-22 and written back to `references/default-doc-taxonomy.md`.
+- The retained `video_list_android_demo` migration provided the positive validation for preserving redirect stubs at high-visibility old paths, especially former root-level entry docs.
+- The earlier `tiny_player` run remains supporting evaluation evidence, but it was not treated as the retained proof because that repository migration was rolled back.
+- The baseline checklist already required archive pointers, replacement notes, or historical breadcrumbs when readers still needed the old path, so the accepted delta was the stronger default for high-visibility paths plus an explicit signal list for deciding when a path is high-visibility.
+- No `SKILL.md` change was needed because this rule belongs to fallback taxonomy synchronization guidance rather than the core runtime workflow.
 
 ## Historical Baseline Findings That Drove The Rewrite
 

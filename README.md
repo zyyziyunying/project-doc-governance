@@ -15,7 +15,8 @@
 
 - [`SKILL.md`](SKILL.md): 这份 skill 的执行契约。这里放 agent 必须遵守的最小治理规则。
 - [`docs/README.md`](docs/README.md): 这个 skill 仓库自己的人类文档放置规则。
-- [`docs/skill-maintenance-principles.md`](docs/skill-maintenance-principles.md): 维护这份 skill 时使用的高层原则。
+- [`docs/skill-meta-principles.md`](docs/skill-meta-principles.md): 这份 skill 作为一个 skill 应该如何演进的元原则。
+- [`docs/skill-shadow-spec.md`](docs/skill-shadow-spec.md): 讨论中的影子执行规范，只记录相对当前 baseline 的候选 delta。
 - [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md): 目标仓库缺少本地规则时使用的 fallback taxonomy。
 - [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md): 当前仍然活跃的验证缺口和下一道 review gate。
 - [`docs/problem/archive/2026-03-21-skill-review-history.md`](docs/problem/archive/2026-03-21-skill-review-history.md): 已归档的历史评审、整改阶段和试跑证据。
@@ -31,6 +32,8 @@
 ## 维护约束
 
 - 改分类规则时，优先更新 [`SKILL.md`](SKILL.md) 或 [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md)。
+- 改这份 skill 的演进方式或文档边界时，更新 [`docs/skill-meta-principles.md`](docs/skill-meta-principles.md)。
+- 讨论中的候选规则先记到 [`docs/skill-shadow-spec.md`](docs/skill-shadow-spec.md)，收敛后再同步回权威文件。
 - 改这个仓库自己的 docs 放置规则时，更新 [`docs/README.md`](docs/README.md)。
 - 活跃问题和验证缺口只留在 [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md)；详细历史留在 archive。
 - 提交前运行：

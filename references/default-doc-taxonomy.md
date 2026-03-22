@@ -124,6 +124,8 @@ After moving or splitting docs, check:
 
 - outbound links from moved or split docs
 - inbound references from `docs/README.md`, directory indexes, and neighboring docs
-- archive pointers, replacement notes, or historical breadcrumbs when readers still need the old path
+- whether the old path was high-visibility: a repository-root or other obvious entry path, explicitly linked from the root `README.md`, `docs/README.md`, a directory index, or a neighboring category README, or known to have inbound references, bookmarks, replacement notes, or other human navigation dependence
+- preserve a short redirect stub at a high-visibility old path by default, unless stronger repository-local rules explicitly require the old path to disappear
+- for other old paths, leave archive pointers, replacement notes, or historical breadcrumbs when readers still need traceability to the new path
 
 If any of these fixes are deferred, report them explicitly.
