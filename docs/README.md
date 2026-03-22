@@ -24,13 +24,12 @@ Use for active repository-local problem records, such as:
 
 ### `docs/problem/archive/`
 
-Use for closed or superseded problem records that are kept only for traceability.
-
-Create this directory when the first active problem record is retired.
+Use for closed or superseded problem records, or for archived history extracted from an active tracker when the historical detail is still useful for traceability.
 
 ## Current Docs
 
-- `docs/problem/skill-review-and-remediation.md`: active review, remediation history, and next review gate for this skill repository.
+- `docs/problem/skill-review-and-remediation.md`: active follow-up tracker, current status, and next review gate for this skill repository.
+- `docs/problem/archive/2026-03-21-skill-review-history.md`: archived baseline review, completed remediation phases, and forward-test evidence.
 
 ## Placement Rules
 

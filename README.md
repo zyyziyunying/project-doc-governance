@@ -25,7 +25,8 @@
 - [`SKILL.md`](SKILL.md) 是这份 skill 的权威执行说明。
 - [`docs/README.md`](docs/README.md) 是这个 skill 仓库自身 docs 放置规则的权威说明。
 - [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md) 是在目标仓库缺少本地分类规则时使用的 fallback taxonomy。
-- [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md) 记录这个 skill 仓库当前的复评、整改阶段、前向试跑证据和当前评分。
+- [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md) 记录这个 skill 仓库当前仍然活跃的修复项、验证缺口和下一道 review gate。
+- [`docs/problem/archive/2026-03-21-skill-review-history.md`](docs/problem/archive/2026-03-21-skill-review-history.md) 保留已归档的基线评审、已完成整改阶段和历史试跑证据。
 
 README 只负责说明这份 skill 的定位、使用场景和维护入口。这个 skill 仓库自身的 docs 放置规则见 [`docs/README.md`](docs/README.md)，完整执行规范仍以 [`SKILL.md`](SKILL.md) 为准。
 
@@ -186,7 +187,8 @@ flowchart TD
 ## 仓库结构
 
 - [`docs/README.md`](docs/README.md): 这个 skill 仓库自己的 docs taxonomy，当前主要用于问题记录。
-- [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md): 复盘、整改阶段、试跑记录和当前评估。
+- [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md): 当前活跃的修复跟踪、验证缺口和下一道 review gate。
+- [`docs/problem/archive/2026-03-21-skill-review-history.md`](docs/problem/archive/2026-03-21-skill-review-history.md): 已归档的基线评审、已完成整改阶段和历史试跑细节。
 - [`SKILL.md`](SKILL.md): skill 正文，定义触发后的执行流程、输出要求和边界。
 - [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md): 默认文档分类模型和 gray-area mapping。
 - [`scripts/basic_validate.py`](scripts/basic_validate.py): 无外部依赖的轻量校验脚本。
@@ -201,7 +203,7 @@ flowchart TD
 - 其中一次真实迁移样本验证了这套模式可落地：补 `docs/README.md`、归档历史文档、保留旧路径跳转页、同步 `AGENTS.md`。
 - 当前复评分记录为 `8/10`，下一阶段重点是验证“目标仓库已经存在本地 taxonomy 时”的 authority 冲突处理是否依然稳定。
 
-详细证据见 [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md)。
+当前活跃问题见 [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md)，历史证据见 [`docs/problem/archive/2026-03-21-skill-review-history.md`](docs/problem/archive/2026-03-21-skill-review-history.md)。
 
 ## 维护建议
 
