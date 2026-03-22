@@ -2,7 +2,7 @@
 
 This `docs/` tree is the repository-local documentation taxonomy for `project-doc-governance`.
 
-It is intentionally small. This skill repository uses `docs/` mainly to record repository-local problems, review findings, and remediation work. It does not duplicate the reusable fallback reference material in `references/`, and it does not replace the execution contract in `SKILL.md`.
+It is intentionally small. This skill repository uses `docs/` mainly to record repository-local problems, review findings, remediation work, and a small number of repository-local maintenance guide files. It does not duplicate the reusable fallback reference material in `references/`, and it does not replace the execution contract in `SKILL.md`.
 
 ## Authority
 
@@ -28,6 +28,7 @@ Use for closed or superseded problem records, or for archived history extracted 
 
 ## Current Docs
 
+- `docs/skill-maintenance-principles.md`: repository-local maintenance principles for evolving this skill without turning `README.md` or the active tracker into a second execution spec.
 - `docs/problem/skill-review-and-remediation.md`: active follow-up tracker, current status, and next review gate for this skill repository.
 - `docs/problem/archive/2026-03-21-skill-review-history.md`: archived baseline review, completed remediation phases, and forward-test evidence.
 
@@ -35,6 +36,7 @@ Use for closed or superseded problem records, or for archived history extracted 
 
 - If a document mainly tracks repository-local issues or remediation work for this skill, place it under `docs/problem/`.
 - If that record is no longer active but still worth keeping, move it to `docs/problem/archive/`.
+- Keep stable repository-local maintenance principles that are not active problem trackers as standalone guide files under `docs/`.
 - Keep generic, reusable guidance under `references/`.
 - Keep skill execution rules in `SKILL.md`.
 - Update this file in the same task if this repository later adopts more docs categories.

@@ -1,10 +1,10 @@
 # Default Project Docs Taxonomy
 
-Use this reference only when a repository does not already define its own documentation taxonomy.
+Use this reference only when repository-local docs do not already settle the placement decision.
 
-## Read Local Docs First
+## Local-First Rules
 
-Before using this default model, read repository-local structure docs when they exist:
+Read local structure docs first when they exist:
 
 - `docs/taxonomy.md`
 - `docs/doc-taxonomy.md`
@@ -13,40 +13,23 @@ Before using this default model, read repository-local structure docs when they 
 - `AGENTS.md`
 - `docs/README.md`, but only when it explicitly defines human-facing docs structure or placement
 
-Do not infer docs placement from a general project `README.md` unless it explicitly defines taxonomy rules for the target scope.
-
-If those files define placement rules, follow them instead of this reference.
-
-## Authority And Conflict Resolution
-
-Use this order when deciding which rule controls a documentation placement decision:
+Use this precedence order for placement decisions:
 
 1. the nearest dedicated taxonomy, placement, or category index file that explicitly covers the target path
 2. a repository-level taxonomy or structure document that defines category semantics
 3. `docs/README.md` when it explicitly defines the human-facing docs structure or placement
-4. `AGENTS.md` for agent-operational handling, or for explicit pointers to the real source of truth
-5. this default reference, only when the repository does not define the needed rule
+4. `AGENTS.md` for agent-operational handling or explicit pointers to the real source of truth
+5. this reference, only when the repository does not define the needed rule
 
-Apply these tie-break rules:
+Treat a local taxonomy source as:
 
-- Prefer the more specific scope over the broader scope.
-- Prefer dedicated taxonomy docs over general README or index docs when both cover the same scope.
-- Prefer human-facing taxonomy docs over `AGENTS.md` for category meaning and placement.
-- If two sources at the same level disagree and neither is clearly stale, report the conflict instead of inventing a merged rule.
+- missing when it does not cover the current document class or destination decision
+- partial when it defines a stable pattern for part of the tree but leaves some classes, destinations, or boundary cases unspecified
+- stale when it points to removed paths, contradicts the active tree, conflicts with a more specific maintained source, or clearly predates a known restructure
 
-Treat a local taxonomy source as stale when one or more of these are true:
-
-- it points to directories or files that no longer exist
-- it describes category semantics that contradict the active docs structure
-- it conflicts with a more specific maintained source
-- it has clearly not been updated after a known restructure
-
-When local docs are stale or incomplete:
-
-- follow the strongest still-valid local source when the correct outcome is still clear
-- report the stale files that need synchronization
-- fall back to this reference only for the uncovered portion of the decision
-- avoid broad restructuring based only on inference when stale docs could change the result
+When local docs are partial, extend the stable local pattern and use this reference only for the uncovered portion.
+When local docs are stale but a stronger active source still makes the outcome clear, follow the stronger source and report the stale doc that needs synchronization.
+If stale or conflicting local docs would materially change the result, report the ambiguity instead of inventing a merged rule.
 
 A `docs/README.md` that is only navigational and does not define category meaning or placement is not a controlling source for classification.
 
@@ -69,8 +52,6 @@ These documents may directly affect coding, validation, migration, or review out
 
 Use for historical problem documents that are no longer active but still useful for traceability.
 
-Move closed blocker documents here instead of deleting them when the history still explains past decisions.
-
 ### `docs/knowledge/`
 
 Use for developer-facing background material such as:
@@ -90,9 +71,15 @@ If multiple guides of the same kind accumulate, consider introducing a dedicated
 
 ## Optional Local Pattern For Execution-Heavy Repositories
 
-Use this only as a repository-local taxonomy pattern when the generic fallback categories are too coarse for a project whose docs repeatedly revolve around problem definition, analysis, discussion, planning, and status tracking.
+Use this only as a repository-local pattern when the smaller fallback categories are too coarse for a project whose docs repeatedly revolve around problem definition, analysis, discussion, planning, and status tracking.
 
-This is not a new global default. It becomes authoritative only after the repository documents it locally in `docs/README.md`, `docs/taxonomy.md`, or a similarly scoped taxonomy file.
+This is not a new global default.
+Use it only when:
+
+- the repository already documents the pattern locally
+- or the existing docs already show a repeated split that the smaller fallback would materially collapse, and you can formalize that adoption locally in the same task
+
+If that signal is absent, keep the smaller fallback categories.
 
 Recommended categories:
 
@@ -102,15 +89,7 @@ Recommended categories:
 - `docs/analysis/`
 - `docs/discussion/`
 
-If a repository already uses `docs/progress/`, it can keep that directory name, but it should define it with `status` semantics rather than treating it as a generic bucket for anything time-related.
-
-Each category may keep its own `archive/` subdirectory for closed material, for example:
-
-- `docs/problem/archive/`
-- `docs/plan/archive/`
-- `docs/status/archive/`
-- `docs/analysis/archive/`
-- `docs/discussion/archive/`
+If a repository already uses `docs/progress/`, it can keep that directory name, but it should define it with `status` semantics rather than treating it as a generic time-based bucket.
 
 Use these category meanings:
 
@@ -120,91 +99,31 @@ Use these category meanings:
 - `analysis`: root-cause analysis, technical comparison, investigations, experiments, and evaluation material
 - `discussion`: unresolved design debate, RFC drafts, meeting discussion notes, and open questions
 
-Use these boundary rules:
-
-- Keep `problem` focused on what must be solved or respected, not how the work will be executed.
-- Keep `plan` for chosen execution paths, not still-open debate.
-- Keep `analysis` for evidence and reasoning, not final implementation mandates.
-- Keep `discussion` for unresolved conversation, not durable rules.
-- Keep `status` for reporting outcomes and state, not as a second home for plans or requirements.
-- Split mixed-purpose docs instead of stretching one file across multiple category meanings.
-
-Common mappings under this local pattern:
-
-- blockers and acceptance gaps -> `problem`
-- rollout plans and migration checklists -> `plan`
-- weekly updates and closeout summaries -> `status`
-- root-cause analysis and technical comparison -> `analysis`
-- RFC drafts and meeting debate notes -> `discussion`
-
-When a discussion becomes binding:
-
-- promote durable requirements into `problem` or the repository's implementation-facing source of truth
-- promote accepted execution steps into `plan`
-- archive the historical discussion copy under `discussion/archive/` when it is no longer active
-
-When a repository adopts this pattern, keep the structure small at first. Add extra top-level categories only after the repository has repeated documents with a clearly different purpose that does not fit these five categories or a standalone guide.
-
-## Placement Rules
-
-Choose the destination by the document's strongest function.
-
-- If the file defines what implementation must do, it belongs in `docs/problem/`.
-- If the file explains how something works or how to think about it, it belongs in `docs/knowledge/`.
-- If the file explains how to operate or maintain one subsystem, keep it as a guide file unless a broader guide category becomes necessary.
-
-When a file mixes concerns:
-
-- split background explanation from binding rules
-- keep the binding rules closer to implementation docs
-- keep the explanatory material in `docs/knowledge/`
+Keep mixed-purpose docs split instead of stretching one file across multiple category meanings.
 
 ## Common Document Class Mapping
 
-Use these default mappings only when the repository does not already define a better local convention.
+Use these default mappings only when the repository does not already define a better local convention:
 
-- ADRs: keep active or accepted architecture decisions with implementation-facing docs. If the repository has a dedicated ADR area, use it. Otherwise keep them with `docs/problem/` or an equivalent decision area. Superseded ADRs can be archived if the repository keeps decision history separately.
-- RFCs or design proposals: keep active proposals with implementation-facing docs while they still drive implementation debate. Archive rejected or expired proposals. If a proposal becomes binding, promote the durable rules into the implementation-facing source of truth.
-- Runbooks and operational playbooks: keep them as guide files or in an operations-guides area. They are operational references, not knowledge docs, unless they are purely explanatory.
-- Incident reports and postmortems: keep the narrative and timeline in a historical or archive area. Split any still-open corrective actions into implementation-facing docs.
-- Release notes and changelogs: keep them with release-history docs, not under `problem` or `knowledge`, unless the repository explicitly treats them that way.
-- Meeting notes: treat them as historical working notes, not as the source of truth. Promote decisions, actions, and binding rules into authoritative docs and archive the notes separately.
-- Investigations and spikes: keep active investigations with implementation-facing docs while they inform active decisions. Move durable explanatory findings into knowledge docs. Archive closed investigations that are no longer an active contract.
+- ADRs: keep active or accepted architecture decisions with implementation-facing docs, unless the repository already has a dedicated ADR area
+- RFCs or design proposals: keep active proposals with implementation-facing docs while they still drive implementation debate; archive rejected or expired proposals
+- runbooks and operational playbooks: keep them as guide files or in an operations-guides area unless they are purely explanatory
+- incident reports and postmortems: keep the narrative and timeline in a historical or archive area; split any still-open corrective actions into implementation-facing docs
+- release notes and changelogs: keep them with release-history docs, not under `problem` or `knowledge`, unless the repository explicitly treats them that way
+- meeting notes: treat them as historical working notes, not as the source of truth; promote decisions and actions into authoritative docs
+- investigations and spikes: keep active investigations with implementation-facing docs while they inform active decisions; move durable explanatory findings into knowledge docs; archive closed investigations that are no longer an active contract
 
-## Synchronization Rules
+## Synchronization Checklist
 
-When a repository uses this default model and the taxonomy changes, update these files in the same task:
+When taxonomy or placement changes under this fallback model, update in the same task:
 
-- the repository's human-facing docs index or taxonomy doc, often `docs/README.md` when the repository uses it for that purpose
-- `AGENTS.md` for short agent-facing operating rules
+- the repository's human-facing docs index or taxonomy doc
+- `AGENTS.md` only when short agent-operational rules must change
 
-Do not rely on only one of them if both audiences are affected.
+After moving or splitting docs, check:
 
-## Migration Integrity Checklist
-
-After moving or splitting docs under this default model, check:
-
-- outbound links from the moved or split docs
+- outbound links from moved or split docs
 - inbound references from `docs/README.md`, directory indexes, and neighboring docs
-- archive references, replacement pointers, or historical breadcrumbs when readers still need the old path
-- any navigation files that summarize category contents
+- archive pointers, replacement notes, or historical breadcrumbs when readers still need the old path
 
-If you defer any of these fixes, report them explicitly.
-
-## Signals That a Doc Is Misfiled
-
-- a `knowledge` doc is cited as the binding implementation contract
-- a `problem` doc mainly teaches concepts and contains few concrete decisions
-- the same rule appears in multiple docs with different wording
-- a guide file starts acting like a phase plan or migration contract
-- new docs require repeated debate about placement because the taxonomy is underspecified
-
-## When to Add a New Category
-
-Add a new top-level docs category only if all of these are true:
-
-1. at least two or three documents already share a distinct purpose
-2. that purpose is not well served by `problem`, `knowledge`, or a standalone guide
-3. the new category can be explained in one or two clear sentences in `docs/README.md`
-
-If those conditions are not met, keep the structure smaller.
+If any of these fixes are deferred, report them explicitly.
