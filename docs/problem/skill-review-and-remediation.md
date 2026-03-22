@@ -11,6 +11,7 @@ Historical archive: [archive/2026-03-21-skill-review-history.md](archive/2026-03
 ## Current Status
 
 - Phases 1 through 7 were completed on 2026-03-20.
+- The archived review history was expanded on 2026-03-22 so the detailed historical rationale remains preserved outside the active tracker.
 - The working reassessment remains `8/10` as of 2026-03-21.
 - The skill is structurally usable and no longer repository-hardcoded, but it still has open convergence and validation work before a higher score is justified.
 
@@ -73,27 +74,6 @@ Validation needed:
 
 - test against a repository with a dedicated local taxonomy and a partially stale docs index or category README
 
-### 4. Restore traceability depth in the archived review history
-
-Status: open
-
-Why this remains open:
-
-- the archive currently summarizes the historical forward tests and baseline findings instead of preserving their original detail
-- the active tracker split removed classification outcomes, impact analysis, required fixes, and exit criteria rather than relocating them in full
-- this keeps the active file shorter, but it weakens historical traceability for later reviewers
-
-Required changes:
-
-- either move the omitted historical sections into the archive, or explicitly narrow all references that currently imply full-detail preservation
-- make the archive clear about which evidence is preserved in summary form versus which detail remains available elsewhere
-- preserve enough historical rationale that a future reviewer can reconstruct why the earlier score and remediation phases changed
-
-Validation needed:
-
-- confirm the archive retains usable detail for the forward-test outcomes, baseline findings, and completed remediation backlog
-- re-check active and entry docs for any wording that overclaims "detailed" historical preservation
-
 ## Field Validation Gaps
 
 - A retained trial is still missing for a repository that already has a dedicated taxonomy doc or category README with real placement semantics.
@@ -107,4 +87,4 @@ Validation needed:
 
 ## Archived Material
 
-- Historical review evidence, the original baseline findings, the completed phase backlog, and summarized forward-test notes currently live in [archive/2026-03-21-skill-review-history.md](archive/2026-03-21-skill-review-history.md); the missing-detail gap is tracked above.
+- Historical review evidence, the original baseline findings, the completed phase backlog, and detailed forward-test notes live in [archive/2026-03-21-skill-review-history.md](archive/2026-03-21-skill-review-history.md).
