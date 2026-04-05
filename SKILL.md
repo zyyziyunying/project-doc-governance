@@ -37,7 +37,7 @@ If stale or conflicting local docs would materially change the result, report th
 5. Use the fallback taxonomy only when local rules do not settle the current decision.
 Read [references/default-doc-taxonomy.md](references/default-doc-taxonomy.md) before creating categories or moving docs by default rules.
 Do not adopt the execution-heavy local pattern just because it looks cleaner.
-Use that five-category pattern only when the repository already documents it locally, or already shows a repeated split that the smaller fallback would materially collapse and you can formalize locally in the same task.
+Use that five-category pattern only when the repository already documents it locally.
 If that signal is absent, keep the smaller fallback taxonomy.
 
 6. Classify by purpose.
@@ -69,7 +69,7 @@ When using this skill, state:
 - Prefer the smallest change that restores structural clarity.
 - Prefer moving or splitting docs over rewriting everything.
 - Do not invent new top-level docs categories unless the existing taxonomy is clearly insufficient.
-- Do not replace the generic fallback taxonomy with the execution-heavy pattern unless the repository explicitly adopts it locally or already shows a repeated split that the fallback would materially collapse.
+- Do not replace the generic fallback taxonomy with the execution-heavy pattern unless the repository explicitly adopts it locally.
 - Do not treat a general project `README.md` as taxonomy authority unless it explicitly defines placement rules for the target docs scope.
 - Do not make `AGENTS.md` the only source of truth for human-facing taxonomy.
 - When a repository already documents its taxonomy locally, follow the repository files over this skill's defaults.
