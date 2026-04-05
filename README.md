@@ -18,6 +18,7 @@
 - [`docs/skill-meta-principles.md`](docs/skill-meta-principles.md): 这份 skill 作为一个 skill 应该如何演进的元原则。
 - [`docs/skill-shadow-spec.md`](docs/skill-shadow-spec.md): 讨论中的影子执行规范，只记录相对当前 baseline 的候选 delta。
 - [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md): 目标仓库缺少本地规则时使用的 fallback taxonomy。
+- [`references/default-doc-header-template.md`](references/default-doc-header-template.md): 目标仓库缺少本地 header 约定时使用的轻量文档头信息模板。
 - [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md): 当前仍然活跃的验证缺口和下一道 review gate。
 - [`docs/problem/archive/2026-03-21-skill-review-history.md`](docs/problem/archive/2026-03-21-skill-review-history.md): 已归档的历史评审、整改阶段和试跑证据。
 
@@ -28,10 +29,12 @@
 - 一份文档同时混合背景说明和绑定性规则。
 - 历史计划、review findings 或 blocker notes 需要归档但不能直接删除。
 - 调整 docs 结构后需要同步索引、导航或旧路径说明。
+- 需要给新文档或迁移后的文档补一个轻量、统一、但不管正文排版的头信息块。
 
 ## 维护约束
 
 - 改分类规则时，优先更新 [`SKILL.md`](SKILL.md) 或 [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md)。
+- 改 fallback header 模板时，更新 [`references/default-doc-header-template.md`](references/default-doc-header-template.md)。
 - 改这份 skill 的演进方式或文档边界时，更新 [`docs/skill-meta-principles.md`](docs/skill-meta-principles.md)。
 - 讨论中的候选规则先记到 [`docs/skill-shadow-spec.md`](docs/skill-shadow-spec.md)，收敛后再同步回权威文件。
 - 改这个仓库自己的 docs 放置规则时，更新 [`docs/README.md`](docs/README.md)。

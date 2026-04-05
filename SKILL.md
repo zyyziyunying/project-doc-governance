@@ -45,7 +45,12 @@ Follow repository-local purpose categories when they exist.
 Otherwise use [references/default-doc-taxonomy.md](references/default-doc-taxonomy.md) for default category meanings.
 Split mixed-purpose documents so binding implementation rules stay with implementation-facing docs and background explanation stays with knowledge or reference material.
 
-7. Synchronize and verify.
+7. Use a lightweight header template when needed.
+If the repository already defines a document header or metadata pattern, follow the local pattern first.
+Otherwise, when you create a new doc or normalize the opening metadata of an existing one, use [references/default-doc-header-template.md](references/default-doc-header-template.md) as a fallback scaffold.
+Treat that template as header-only guidance for opening document metadata, not as a required body layout.
+
+8. Synchronize and verify.
 If you add a docs category, move documents between categories, or materially change category semantics, update the repository-local taxonomy or index docs in the same task.
 Update `AGENTS.md` only for short agent-operational rules.
 Check obvious links, directory indexes, `docs/README.md`, archive pointers, and nearby inbound references affected by the change.
