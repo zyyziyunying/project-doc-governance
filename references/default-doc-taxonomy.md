@@ -4,8 +4,9 @@ Use this reference only when a repository does not already define where docs sho
 
 ## Local-First Rules
 
-Check local docs first.
-If local docs already answer the placement question, follow them.
+Check repository-local docs rules first.
+This can include docs rules near the target doc and a repository-level docs taxonomy, `CONTRIBUTING.md`, or similar contribution doc when it explicitly defines placement.
+If those local rules already answer the placement question, follow them.
 If not, use the fallback structure below.
 
 ## Default Structure
@@ -62,7 +63,7 @@ Archive superseded product docs under `docs/product/archive/`.
 - If the doc says what is blocked or risky, use `docs/problem/`
 - If the doc is still under discussion, use `docs/discussion/`
 - If a doc is no longer active but still worth keeping, move it into that category's `archive/`
-- If one doc tries to do too many jobs, split it
+- If a doc mixes purposes, first prefer a smaller change that makes placement clear; split only when that cannot clarify placement
 - Do not archive across categories; archive within the same category
 
 ## Notes
