@@ -1,4 +1,4 @@
 interface:
   display_name: "Project Doc Governance"
-  short_description: "Govern docs with local taxonomy first"
-  default_prompt: "Use $project-doc-governance to classify, review, or reorganize this project's docs by applying the repository's local taxonomy first."
+  short_description: "Place docs with local rules first"
+  default_prompt: "Use $project-doc-governance to place, split, or reorganize project docs using repository-local rules first, then the fallback design/check/plan/status/problem/discussion/product taxonomy and header template if needed."

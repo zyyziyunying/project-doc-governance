@@ -1,46 +1,55 @@
 # project-doc-governance
 
-`project-doc-governance` 是一份用于治理项目文档结构的 Codex skill。
+`project-doc-governance` 是一个非常轻量的文档整理 skill。
 
-它的目标不是把所有仓库套进同一套 docs 树，而是让 agent 先识别目标仓库自己的文档规则，再决定某份文档应该保留、移动、拆分、归档还是原地修订。
+它只做三件事：
 
-## 这份 skill 负责什么
+- 优先读取目标仓库自己的文档放置规则
+- 在缺少本地规则时提供一个默认 docs 结构
+- 给新文档提供一个轻量 header 模板
 
-- 优先发现并遵守仓库本地 taxonomy。
-- 先解决 authority，再做文档分类。
-- 只在本地规则没有覆盖当前决策时使用 fallback taxonomy。
-- 按文档用途处理 mixed-purpose docs、归档和结构同步。
+## 默认 docs 结构
 
-## 文件分层
-
-- [`SKILL.md`](SKILL.md): 这份 skill 的执行契约。这里放 agent 必须遵守的最小治理规则。
-- [`docs/README.md`](docs/README.md): 这个 skill 仓库自己的人类文档放置规则。
-- [`docs/skill-meta-principles.md`](docs/skill-meta-principles.md): 这份 skill 作为一个 skill 应该如何演进的元原则。
-- [`docs/skill-shadow-spec.md`](docs/skill-shadow-spec.md): 讨论中的影子执行规范，只记录相对当前 baseline 的候选 delta。
-- [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md): 目标仓库缺少本地规则时使用的 fallback taxonomy。
-- [`references/default-doc-header-template.md`](references/default-doc-header-template.md): 目标仓库缺少本地 header 约定时使用的轻量文档头信息模板。
-- [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md): 当前仍然活跃的验证缺口和下一道 review gate。
-- [`docs/problem/archive/2026-03-21-skill-review-history.md`](docs/problem/archive/2026-03-21-skill-review-history.md): 已归档的历史评审、整改阶段和试跑证据。
-
-## 适用场景
-
-- 需要判断一份 doc 应该放在哪里。
-- 本地 taxonomy、`docs/README.md`、`AGENTS.md` 的边界不清。
-- 一份文档同时混合背景说明和绑定性规则。
-- 历史计划、review findings 或 blocker notes 需要归档但不能直接删除。
-- 调整 docs 结构后需要同步索引、导航或旧路径说明。
-- 需要给新文档或迁移后的文档补一个轻量、统一、但不管正文排版的头信息块。
-
-## 维护约束
-
-- 改分类规则时，优先更新 [`SKILL.md`](SKILL.md) 或 [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md)。
-- 改 fallback header 模板时，更新 [`references/default-doc-header-template.md`](references/default-doc-header-template.md)。
-- 改这份 skill 的演进方式或文档边界时，更新 [`docs/skill-meta-principles.md`](docs/skill-meta-principles.md)。
-- 讨论中的候选规则先记到 [`docs/skill-shadow-spec.md`](docs/skill-shadow-spec.md)，收敛后再同步回权威文件。
-- 改这个仓库自己的 docs 放置规则时，更新 [`docs/README.md`](docs/README.md)。
-- 活跃问题和验证缺口只留在 [`docs/problem/skill-review-and-remediation.md`](docs/problem/skill-review-and-remediation.md)；详细历史留在 archive。
-- 提交前运行：
-
-```bash
-python scripts/basic_validate.py
+```text
+docs/
+  design/
+    archive/
+  check/
+    archive/
+  plan/
+    archive/
+  status/
+    archive/
+  problem/
+    archive/
+  discussion/
+    archive/
+  product/
+    archive/
 ```
+
+## 目录边界
+
+- `product`: 要做什么
+- `design`: 技术方案
+- `check`: 验收和检查
+- `plan`: 怎么执行
+- `status`: 当前状态
+- `problem`: 问题和风险
+- `discussion`: 讨论中的事项
+
+每个目录下的 `archive/` 只归档本类别的旧文件。
+
+## 文件
+
+- [`SKILL.md`](SKILL.md): 运行时规则
+- [`references/default-doc-taxonomy.md`](references/default-doc-taxonomy.md): 默认 docs 结构
+- [`references/default-doc-header-template.md`](references/default-doc-header-template.md): 默认 header 模板
+- [`docs/README.md`](docs/README.md): 这个仓库自己的 docs 说明
+
+## 定位
+
+- 这不是治理系统
+- 不带校验脚本
+- 不带 review 流程
+- 不带复杂规范

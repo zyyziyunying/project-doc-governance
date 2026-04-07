@@ -1,130 +1,73 @@
 # Default Project Docs Taxonomy
 
-Use this reference only when repository-local docs do not already settle the placement decision.
+Use this reference only when a repository does not already define where docs should live.
 
 ## Local-First Rules
 
-Read local structure docs first when they exist:
+Check local docs first.
+If local docs already answer the placement question, follow them.
+If not, use the fallback structure below.
 
-- `docs/taxonomy.md`
-- `docs/doc-taxonomy.md`
-- `docs/structure.md`
-- category index files or neighboring directory README files
-- `AGENTS.md`
-- `docs/README.md`, but only when it explicitly defines human-facing docs structure or placement
+## Default Structure
 
-Use this precedence order for placement decisions:
+### `docs/design/`
 
-1. the nearest dedicated taxonomy, placement, or category index file that explicitly covers the target path
-2. a repository-level taxonomy or structure document that defines category semantics
-3. `docs/README.md` when it explicitly defines the human-facing docs structure or placement
-4. `AGENTS.md` for agent-operational handling or explicit pointers to the real source of truth
-5. this reference, only when the repository does not define the needed rule
+Use for technical design.
 
-Treat a local taxonomy source as:
+Archive older or superseded design docs under `docs/design/archive/`.
 
-- missing when it does not cover the current document class or destination decision
-- partial when it defines a stable pattern for part of the tree but leaves some classes, destinations, or boundary cases unspecified
-- stale when it points to removed paths, contradicts the active tree, conflicts with a more specific maintained source, or clearly predates a known restructure
+### `docs/check/`
 
-When local docs are partial, extend the stable local pattern and use this reference only for the uncovered portion.
-When local docs are stale but a stronger active source still makes the outcome clear, follow the stronger source and report the stale doc that needs synchronization.
-If stale or conflicting local docs would materially change the result, report the ambiguity instead of inventing a merged rule.
+Use for validation, acceptance, and release checks.
 
-A `docs/README.md` that is only navigational and does not define category meaning or placement is not a controlling source for classification.
+Archive completed or expired check materials under `docs/check/archive/`.
 
-## Default Categories
+### `docs/plan/`
+
+Use for execution plans.
+
+Archive old or completed plans under `docs/plan/archive/`.
+
+### `docs/status/`
+
+Use for progress and results.
+
+Archive outdated status docs under `docs/status/archive/`.
 
 ### `docs/problem/`
 
-Use for implementation-facing project documents such as:
+Use for blockers, defects, risks, and constraints.
 
-- active plans
-- blockers
-- migration constraints
-- phase definitions
-- data-contract decisions
-- acceptance or rebuild rules
+Archive resolved problem records under `docs/problem/archive/`.
 
-These documents may directly affect coding, validation, migration, or review outcomes.
+### `docs/discussion/`
 
-### `docs/problem/archive/`
+Use for open questions and discussion.
 
-Use for historical problem documents that are no longer active but still useful for traceability.
+Archive closed discussions under `docs/discussion/archive/`.
 
-### `docs/knowledge/`
+### `docs/product/`
 
-Use for developer-facing background material such as:
+Use for product scope and requirements.
 
-- concept explanations
-- learning notes
-- technology overviews
-- high-level implementation understanding
+Archive superseded product docs under `docs/product/archive/`.
 
-These documents help humans understand the domain. They are not default agent-required execution specs.
+## Quick Placement Rules
 
-### Standalone Guide Files
+- If the doc says what to build, use `docs/product/`
+- If the doc says how to design it, use `docs/design/`
+- If the doc says how to validate or accept it, use `docs/check/`
+- If the doc says how to execute it, use `docs/plan/`
+- If the doc says where things stand, use `docs/status/`
+- If the doc says what is blocked or risky, use `docs/problem/`
+- If the doc is still under discussion, use `docs/discussion/`
+- If a doc is no longer active but still worth keeping, move it into that category's `archive/`
+- If one doc tries to do too many jobs, split it
+- Do not archive across categories; archive within the same category
 
-Use standalone guide files for narrow operational references that are not broad enough to justify a full category.
+## Notes
 
-If multiple guides of the same kind accumulate, consider introducing a dedicated category later, but only after the pattern is real.
-
-## Optional Local Pattern For Execution-Heavy Repositories
-
-Use this only as a repository-local pattern when the smaller fallback categories are too coarse for a project whose docs repeatedly revolve around problem definition, analysis, discussion, planning, and status tracking.
-
-This is not a new global default.
-Use it only when:
-
-- the repository already documents the pattern locally
-
-If that signal is absent, keep the smaller fallback categories.
-
-Recommended categories:
-
-- `docs/problem/`
-- `docs/plan/`
-- `docs/status/`
-- `docs/analysis/`
-- `docs/discussion/`
-
-If a repository already uses `docs/progress/`, it can keep that directory name, but it should define it with `status` semantics rather than treating it as a generic time-based bucket.
-
-Use these category meanings:
-
-- `problem`: problem statements, constraints, acceptance gaps, blockers, and risks
-- `plan`: accepted implementation plans, migration steps, rollout checklists, and task breakdowns
-- `status`: progress snapshots, phase closeouts, completion records, and stabilization summaries
-- `analysis`: root-cause analysis, technical comparison, investigations, experiments, and evaluation material
-- `discussion`: unresolved design debate, RFC drafts, meeting discussion notes, and open questions
-
-Keep mixed-purpose docs split instead of stretching one file across multiple category meanings.
-
-## Common Document Class Mapping
-
-Use these default mappings only when the repository does not already define a better local convention:
-
-- ADRs: keep active or accepted architecture decisions with implementation-facing docs, unless the repository already has a dedicated ADR area
-- RFCs or design proposals: keep active proposals with implementation-facing docs while they still drive implementation debate; archive rejected or expired proposals
-- runbooks and operational playbooks: keep them as guide files or in an operations-guides area unless they are purely explanatory
-- incident reports and postmortems: keep the narrative and timeline in a historical or archive area; split any still-open corrective actions into implementation-facing docs
-- release notes and changelogs: keep them with release-history docs, not under `problem` or `knowledge`, unless the repository explicitly treats them that way
-- meeting notes: treat them as historical working notes, not as the source of truth; promote decisions and actions into authoritative docs
-- investigations and spikes: keep active investigations with implementation-facing docs while they inform active decisions; move durable explanatory findings into knowledge docs; archive closed investigations that are no longer an active contract
-
-## Synchronization Checklist
-
-When taxonomy or placement changes under this fallback model, update in the same task:
-
-- the repository's human-facing docs index or taxonomy doc
-- `AGENTS.md` only when short agent-operational rules must change
-
-After moving or splitting docs, check:
-
-- outbound links from moved or split docs
-- inbound references from `docs/README.md`, directory indexes, and neighboring docs
-- whether the old path was high-visibility: a repository-root or other obvious entry path, explicitly linked from the root `README.md`, `docs/README.md`, a directory index, or a neighboring category README, or known to have inbound references, bookmarks, replacement notes, or other human navigation dependence
-- preserve a short redirect stub at a high-visibility old path by default, unless stronger repository-local rules explicitly require the old path to disappear
-- for other old paths, leave archive pointers, replacement notes, or historical breadcrumbs when readers still need traceability to the new path
-
-If any of these fixes are deferred, report them explicitly.
+- Do not force this onto a repository that already has better local rules
+- Keep the structure simple
+- Update obvious nearby indexes or links when moving docs
+- Do not use `docs/check/` for ordinary progress notes or implementation plans

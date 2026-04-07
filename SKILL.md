@@ -1,80 +1,63 @@
 ---
 name: project-doc-governance
-description: Organize, classify, review, move, split, and archive project documentation with a stable purpose-based taxonomy. Use when Codex needs to decide where a doc belongs, create or relocate docs files or categories, separate background knowledge from binding implementation constraints, keep docs structure aligned with repository-local taxonomy or explicit placement docs, or clean up stale project docs.
+description: Place, split, and reorganize project docs using repository-local docs rules first, then a fallback design/check/plan/status/problem/discussion/product taxonomy and a simple header template when needed.
 ---
 
 # Project Doc Governance
 
-Use this skill to keep repository documentation structurally consistent without imposing one repository's taxonomy on another.
+Use this skill to keep project docs organized in a lightweight way.
 
 ## Core Rules
 
 1. Build minimal context.
-Read only the target document(s) and the local structure docs needed for the current decision.
+Read only the target doc and the local docs files needed for the decision.
 
 2. Check repository-local taxonomy first.
-Read relevant taxonomy or placement docs, category index files, neighboring directory README files, the nearest `AGENTS.md`, and `docs/README.md` only when it explicitly defines human-facing placement for the target scope.
-Do not use a general project `README.md` as taxonomy authority by default.
+If the repository already has local docs rules, follow them first.
 
 3. Resolve authority before classifying.
-Use the nearest dedicated taxonomy or placement doc first.
-Otherwise use repository-level taxonomy or structure docs.
-Use `docs/README.md` only when it explicitly defines placement for the target scope.
-Use `AGENTS.md` for agent-operational behavior and pointers to the source of truth, not to silently rewrite human-facing taxonomy.
-If same-scope local sources still conflict and the outcome would change materially, stop and report the conflict instead of guessing.
+Use the nearest local placement rule that clearly applies.
+If local docs conflict, stop and report the conflict instead of guessing.
 
-4. Decide whether local rules are usable.
-Treat a local rule as:
+4. Use the fallback taxonomy only when local rules do not answer the question.
+Use [references/default-doc-taxonomy.md](references/default-doc-taxonomy.md) as the default structure.
 
-- missing when it does not cover the current document class or destination decision
-- partial when it defines a stable pattern for part of the tree but leaves this case underspecified
-- stale when it points to removed paths, contradicts the active tree, conflicts with a more specific maintained source, or clearly predates a known restructure
+5. Classify by purpose.
+Use these default categories when local docs do not say otherwise:
 
-If local rules are partial, extend the stable local pattern and use fallback rules only for the uncovered portion.
-If local rules are stale but a stronger active source still makes the outcome clear, follow the stronger source and report the stale doc that needs synchronization.
-If stale or conflicting local docs would materially change the result, report the ambiguity before doing a broad reorganization.
+- `docs/product/`: what to build
+- `docs/design/`: technical design
+- `docs/check/`: validation and acceptance
+- `docs/plan/`: execution plan
+- `docs/status/`: current status
+- `docs/problem/`: active problems
+- `docs/discussion/`: open discussion
 
-5. Use the fallback taxonomy only when local rules do not settle the current decision.
-Read [references/default-doc-taxonomy.md](references/default-doc-taxonomy.md) before creating categories or moving docs by default rules.
-Do not adopt the execution-heavy local pattern just because it looks cleaner.
-Use that five-category pattern only when the repository already documents it locally.
-If that signal is absent, keep the smaller fallback taxonomy.
+Each category keeps its own `archive/` subdirectory.
+Move older or superseded files into the matching category archive, not a different one.
+Split mixed-purpose docs when one file is doing too many jobs.
 
-6. Classify by purpose.
-Follow repository-local purpose categories when they exist.
-Otherwise use [references/default-doc-taxonomy.md](references/default-doc-taxonomy.md) for default category meanings.
-Split mixed-purpose documents so binding implementation rules stay with implementation-facing docs and background explanation stays with knowledge or reference material.
+6. Use a simple header when needed.
+If the repository has its own header pattern, follow it.
+Otherwise use [references/default-doc-header-template.md](references/default-doc-header-template.md) as a lightweight fallback.
 
-7. Use a lightweight header template when needed.
-If the repository already defines a document header or metadata pattern, follow the local pattern first.
-Otherwise, when you create a new doc or normalize the opening metadata of an existing one, use [references/default-doc-header-template.md](references/default-doc-header-template.md) as a fallback scaffold.
-Treat that template as header-only guidance for opening document metadata, not as a required body layout.
-
-8. Synchronize and verify.
-If you add a docs category, move documents between categories, or materially change category semantics, update the repository-local taxonomy or index docs in the same task.
-Update `AGENTS.md` only for short agent-operational rules.
-Check obvious links, directory indexes, `docs/README.md`, archive pointers, and nearby inbound references affected by the change.
-Report deferred fixes explicitly.
+7. Keep changes small and obvious.
+Prefer moving, splitting, or lightly rewriting docs over inventing new categories.
+If you move docs, update obvious nearby indexes or links in the same task.
 
 ## Output Expectations
 
 When using this skill, state:
 
 - the classification decision
-- which local or fallback source of truth controlled the decision
-- why the current path is correct or incorrect
+- which local rule or fallback rule controlled the decision
 - the exact action summary: move, split, archive, update in place, or no-op
-- which files were updated or still need updates for consistency
-- which link, index, or navigation checks were completed or deferred
-- any conflicts, stale local rules, or partial local rules that affect confidence
-- any unresolved overlap, risks, or follow-up actions
+- which files were updated
+- any follow-up links or index updates that still need attention
 
 ## Boundaries
 
 - Prefer the smallest change that restores structural clarity.
-- Prefer moving or splitting docs over rewriting everything.
-- Do not invent new top-level docs categories unless the existing taxonomy is clearly insufficient.
-- Do not replace the generic fallback taxonomy with the execution-heavy pattern unless the repository explicitly adopts it locally.
-- Do not treat a general project `README.md` as taxonomy authority unless it explicitly defines placement rules for the target docs scope.
-- Do not make `AGENTS.md` the only source of truth for human-facing taxonomy.
-- When a repository already documents its taxonomy locally, follow the repository files over this skill's defaults.
+- Do not override a repository's local docs rules with this fallback.
+- Do not treat a general `README.md` as docs taxonomy authority unless the repository clearly does.
+- Do not turn this into a heavy review or validation workflow.
